@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Consulta.qml</file>
+        <file>Home.qml</file>
+        <file>Images/Logo.png</file>
+        <file>Cadastro.qml</file>
+        <file>RemoveCadastro.qml</file>
+        <file>Contatos/Lista.txt</file>
+        <file>../build-Agenda-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Lista.txt</file>
+    </qresource>
+</RCC>
