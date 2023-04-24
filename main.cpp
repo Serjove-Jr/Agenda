@@ -4,7 +4,7 @@
 //#include "arquivo.h"
 //#include "contato.h"
 //#include "crialista.h"
-//#include "databank.h"
+#include "databank.h"
 #include "statemachine.h"
 #include "controller.h"
 #include <QStringList>
@@ -44,6 +44,13 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("Machine",&machine);
 
     qmlRegisterType<Controller>("StateMachine",1,0,"StateMachine");
+
+
+
+
+
+
+
 
 
    //engine.rootContext() -> setContextProperty("StateMachine", &machine);

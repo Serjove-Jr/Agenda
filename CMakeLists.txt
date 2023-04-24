@@ -25,10 +25,13 @@ set(PROJECT_SOURCES
         controller.cpp
         main.cpp
         qml.qrc
-        databank.h
-        databank.cpp
+#        databank.h
+#        databank.cpp
         statemachine.h
         statemachine.cpp
+        Singleton.h
+        database.h
+        database.cpp
 
 )
 

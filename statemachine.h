@@ -26,24 +26,40 @@
 #include <QJsonDocument>
 #include <QJsonValue>
 
-class StateMachine
+class StateMachine :public QObject
 {
     Q_OBJECT
-    //Q_PROPERTY(QMap map READ map WRITE setMap NOTIFY mapChanged)
+    Q_PROPERTY(QStringList someVar READ someVar WRITE setSomeVar NOTIFY someVarChanged)
+    Q_PROPERTY(QStringList phone READ phone WRITE setPhone NOTIFY phoneChanged)
+    Q_PROPERTY(QStringList mail READ mail WRITE setMail NOTIFY mailChanged)
 
 public:
-    StateMachine();
-    //static void sendValues(QMap<int,contato>);
-    //QMap<int,contato> map();
+    explicit StateMachine(QObject *parent = nullptr);
+    QStringList sendValues();
+    QStringList sendValues2();
+    QStringList sendValues3();
+
+    QStringList someVar();
+    QStringList phone();
+    QString singlePhone(int i);
+    QStringList mail();
+    QString singleMail(int i);
 signals:
-    //void mapChanged();
+    void someVarChanged();
+    void phoneChanged();
+
+    void mailChanged();
 
 public slots:
-    //void setMap(QMap<int,contato>);
-    //static void sendValues(QMap<int,contato>);
+    void setSomeVar(QStringList);
+    void setPhone(QStringList);
+    void setMail(QStringList);
 
 private:
-   //QMap<int,contato> m_map;
+
+    QStringList m_someVar;
+    QStringList m_phone;
+    QStringList m_mail;
 };
 
 #endif // STATEMACHINE_H

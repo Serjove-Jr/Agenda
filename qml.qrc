@@ -8,5 +8,6 @@
         <file>RemoveCadastro.qml</file>
         <file>Contatos/Lista.txt</file>
         <file>../build-Agenda-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/Lista.txt</file>
+        <file>Teste.qml</file>
     </qresource>
 </RCC>

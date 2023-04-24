@@ -1,29 +1,22 @@
-#include "databank.h"
-#include "statemachine.h"
+#include "database.h"
 
-QSqlDatabase db;
-databank::databank()
+Database::Database(QObject *parent)
+    : QObject{parent}
 {
 
 }
-databank::~databank()
-{
-
-}
-
-databank* databank::m_Instance = nullptr;
-databank* databank::getInstance()
+Database* Database::m_Instance = nullptr;
+Database* Database::getInstance()
 {
     if(m_Instance==NULL)
     {
-        m_Instance=new databank();
+        m_Instance=new Database();
     }
     return m_Instance;
 
 }
-
-
-void databank::openBase()
+QSqlDatabase db;
+void Database::openBase()
 {
 
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -32,9 +25,8 @@ void databank::openBase()
 
 }
 
-
 StateMachine machine;
-void databank::addValues(QString name, QString phone, QString mail)
+void Database::addValues(QString name, QString phone, QString mail)
 {
 
     if(!db.open())
@@ -55,7 +47,7 @@ void databank::addValues(QString name, QString phone, QString mail)
     }
  //   db.close();
 }
-void databank::editValues(QString data, QString Collunm, int index)
+void Database::editValues(QString data, QString Collunm, int index)
 {
 
     if(!db.open())
@@ -74,7 +66,7 @@ void databank::editValues(QString data, QString Collunm, int index)
     }
 
 }
-QMap<int,contato> databank::readValues()
+QMap<int,contato> Database::readValues()
 {
     contato conta;
 
@@ -108,7 +100,7 @@ QMap<int,contato> databank::readValues()
     return map;
 }
 
-QStringList databank::readoValos()
+QStringList Database::readoValos()
 {
     contato conta;
 
@@ -149,7 +141,7 @@ QStringList databank::readoValos()
     return lista;
 }
 
-void databank::deleteValue(QString name)
+void Database::deleteValue(QString name)
 {
 
     if(!db.open())

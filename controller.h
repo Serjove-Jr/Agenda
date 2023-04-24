@@ -35,7 +35,13 @@ public slots:
     void createContact(QString name,QString phone,QString mail);
     QStringList readFile();
     void addcontact(QString name, QString phone, QString mail);
-    QMap<int,contato> readValues();
+    void deleteContact(QString name);
+    void editContact(QString data, QString Collunm, int index);
+
+   QStringList readValues();
+   QString singleP(int i);
+   QString singleM(int i);
+
 
 };
 

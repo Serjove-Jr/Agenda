@@ -66,6 +66,14 @@ ApplicationWindow {
                     drawer.close()
                 }
             }
+            ItemDelegate{
+                text: qsTr("Teste")
+                width: parent.width
+                onClicked: {
+                    stackView.push("Teste.qml")
+                    drawer.close()
+                }
+            }
         }
     }
     StackView{

@@ -1,7 +1,8 @@
 #include "controller.h"
 #include "contato.h"
 #include "arquivo.h"
-#include "databank.h"
+#include "database.h"
+#include "statemachine.h"
 
 #include <iostream>
 #include <string>
@@ -22,7 +23,8 @@ Controller::Controller(QObject *parent):
 
 }
 Arquivo arquivo;
-databank database;
+Database database;
+StateMachine machine1;
 
 void Controller::setM_Controller(QString new_Controller)
 {
@@ -53,10 +55,42 @@ QStringList Controller::readFile()
 void Controller::addcontact(QString name, QString phone, QString mail)
 {
     database.addValues(name, phone, mail);
+    //qDebug() << "chegou";
+    //machine1.setSomeVar(database.readoValos());
+    //qDebug() << "chegou2";
+    QStringList names;
+    names << database.readoValos();
+    machine1.setSomeVar(names);
+
+    qDebug() << machine1.someVar();
 }
 
-QMap<int, contato> Controller::readValues()
+void Controller::deleteContact(QString name)
 {
-    database.readValues();
+    database.deleteValue(name);
+
+}
+
+void Controller::editContact(QString data, QString Collunm, int index)
+{
+    database.editValues(data, Collunm, index);
+}
+
+
+QStringList Controller::readValues()
+{
+    //database.readValues();
+    database.readoValos();
+}
+
+QString Controller::singleP(int i)
+{
+   QString phone = machine1.singlePhone(i);
+   return phone;
+}
+QString Controller::singleM(int i)
+{
+    QString mail = machine1.singleMail(i);
+    return mail;
 }
 

@@ -1,7 +1,8 @@
-#ifndef DATABANK_H
-#define DATABANK_H
+#ifndef DATABASE_H
+#define DATABASE_H
 
-#include <QObject>
+//-----------------------------------------------------------------
+//tralha
 #include <QDebug>
 #include <QVariant>
 #include <QStringList>
@@ -14,30 +15,27 @@
 #include <cstdlib>
 #include <QMap>
 #include <QVariantMap>
-
+//----------------------------------------------------------------
 //Headers
 #include "contato.h"
 #include "statemachine.h"
 #include "Singleton.h"
+//----------------------------------------------------------------
 //Database
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-//Json
-#include <QJsonObject>
-#include <QJsonDocument>
-#include <QJsonValue>
-#include <QVariantMap>
+//----------------------------------------------------------------
 
-//contato conta;
+#include <QObject>
 
-class databank: public QObject
+class Database : public QObject
 {
     Q_OBJECT
 public:
-    databank();
-    ~databank();
-    databank* getInstance();
+    explicit Database(QObject *parent = nullptr);
+
+    Database* getInstance();
     void openBase();
     void addValues(QString name, QString phone, QString mail);
     void editValues(QString data, QString Collunm, int index);
@@ -46,15 +44,13 @@ public:
 
     void deleteValue(QString name);
 
+
+
 private:
-    static databank* m_Instance;
+    static Database* m_Instance;
 
-
-
+signals:
 
 };
 
-
-
-
-#endif // DATABANK_H
+#endif // DATABASE_H
