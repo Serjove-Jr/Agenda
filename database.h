@@ -35,7 +35,7 @@ class Database : public QObject
 public:
     explicit Database(QObject *parent = nullptr);
 
-    Database* getInstance();
+    static Database* getInstance();
     void openBase();
     void addValues(QString name, QString phone, QString mail);
     void editValues(QString data, QString Collunm, int index);

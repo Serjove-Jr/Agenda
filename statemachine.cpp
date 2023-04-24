@@ -12,6 +12,7 @@ StateMachine::StateMachine(QObject *parent):QObject(parent)
 
 QStringList StateMachine::someVar() // Função getNome
 {
+    //qDebug()<< "entrou no return";
     return m_someVar;
 }
 void StateMachine::setSomeVar(QStringList newVar) // Seta uma nova QstringList pro nome
@@ -29,10 +30,12 @@ QStringList StateMachine::phone()// Função getPhone
 }
 void StateMachine::setPhone(QStringList newVar) // Seta uma nova QstringList pro telefone
 {
+
     if(m_phone != newVar)
     {
         m_phone = newVar;
         emit phoneChanged();
+
     }
 }
 
@@ -77,9 +80,9 @@ QString StateMachine::singleMail(int i)
 
 QStringList StateMachine::sendValues()
 {
-    Database data;
+
     QMap<int,contato> map;
-    map = data.readValues();
+    map = Database::getInstance()->readValues();
     int count = 0;
     int last = map.size();
     QStringList teste;
@@ -105,9 +108,9 @@ QStringList StateMachine::sendValues()
 }
 QStringList StateMachine::sendValues2()
 {
-    Database data;
+
     QMap<int,contato> map;
-    map = data.readValues();
+    map = Database::getInstance()->readValues();
     int count = 0;
     int last = map.size();
     QStringList teste;
@@ -133,9 +136,9 @@ QStringList StateMachine::sendValues2()
 }
 QStringList StateMachine::sendValues3()
 {
-    Database data;
+
     QMap<int,contato> map;
-    map = data.readValues();
+    map = Database::getInstance()->readValues();
     int count = 0;
     int last = map.size();
     QStringList teste;

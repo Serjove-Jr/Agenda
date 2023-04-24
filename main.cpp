@@ -4,7 +4,7 @@
 //#include "arquivo.h"
 //#include "contato.h"
 //#include "crialista.h"
-#include "databank.h"
+#include "database.h"
 #include "statemachine.h"
 #include "controller.h"
 #include <QStringList>
@@ -47,7 +47,9 @@ int main(int argc, char *argv[])
 
 
 
-
+    Database::getInstance()->openBase();
+    //qDebug()<< "iniciar leitura";
+    Database::getInstance()->readoValos();
 
 
 

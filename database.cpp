@@ -95,14 +95,14 @@ QMap<int,contato> Database::readValues()
 
         }
      }else qDebug()<< "não consegue";
-    db.close();
+    //db.close();
     //StateMachine::sendValues(map);
     return map;
 }
 
 QStringList Database::readoValos()
 {
-    contato conta;
+    //contato conta;
 
 
     QStringList lista;
@@ -113,28 +113,34 @@ QStringList Database::readoValos()
     if(!db.open())
     {
         qDebug()<<"problem opening database";
-    }
-    QSqlQuery qry;
-    qry.prepare("SELECT * FROM contatcs");
-    if(qry.exec())
+    }else{qDebug()<<"Opened to read Values";}
+
+    QSqlQuery qry1;
+    qry1.prepare("SELECT * FROM contatcs");
+
+    if(qry1.exec())
     {
 //        int idName = qry.record().indexOf("Name");
 //        int idPhone = qry.record().indexOf("Phone");
 //        int idMail = qry.record().indexOf("Mail");
         int count = 0;
-        while (qry.next() != qry.last()) {
-            lista.append(qry.value(qry.record().indexOf("Name")).toString());
+
+        while (qry1.next()) {
+
+            lista.append(qry1.value(qry1.record().indexOf("Name")).toString());
            // qDebug()<<lista;
-            phone.append(qry.value(qry.record().indexOf("Phone")).toString());
-          //  qDebug()<<phone;
-            mail.append(qry.value(qry.record().indexOf("Mail")).toString());
-        //    qDebug()<<mail;
+            phone.append(qry1.value(qry1.record().indexOf("Phone")).toString());
+           // qDebug()<<phone;
+            mail.append(qry1.value(qry1.record().indexOf("Mail")).toString());
+            //qDebug()<<mail;
+            qDebug()<< count;
             count++;
 
         }
      }else qDebug()<< "não consegue";
 
     //StateMachine::sendValues(map);
+
     machine.setPhone(phone);
     machine.setMail(mail);
     machine.setSomeVar(lista);

@@ -23,7 +23,7 @@ Controller::Controller(QObject *parent):
 
 }
 Arquivo arquivo;
-Database database;
+
 StateMachine machine1;
 
 void Controller::setM_Controller(QString new_Controller)
@@ -54,12 +54,12 @@ QStringList Controller::readFile()
 
 void Controller::addcontact(QString name, QString phone, QString mail)
 {
-    database.addValues(name, phone, mail);
+    Database::getInstance()->addValues(name, phone, mail);
     //qDebug() << "chegou";
     //machine1.setSomeVar(database.readoValos());
     //qDebug() << "chegou2";
     QStringList names;
-    names << database.readoValos();
+    names << Database::getInstance()->readoValos();
     machine1.setSomeVar(names);
 
     qDebug() << machine1.someVar();
@@ -67,20 +67,20 @@ void Controller::addcontact(QString name, QString phone, QString mail)
 
 void Controller::deleteContact(QString name)
 {
-    database.deleteValue(name);
+    Database::getInstance()->deleteValue(name);
 
 }
 
 void Controller::editContact(QString data, QString Collunm, int index)
 {
-    database.editValues(data, Collunm, index);
+    Database::getInstance()->editValues(data, Collunm, index);
 }
 
 
 QStringList Controller::readValues()
 {
     //database.readValues();
-    database.readoValos();
+    Database::getInstance()->readoValos();
 }
 
 QString Controller::singleP(int i)
